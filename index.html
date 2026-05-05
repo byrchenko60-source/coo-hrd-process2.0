@@ -1,0 +1,1186 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Управління ефективністю команди — COO & HRD</title>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0e0e11;
+  --surface: #16161a;
+  --surface2: #1e1e24;
+  --border: rgba(255,255,255,0.07);
+  --border2: rgba(255,255,255,0.12);
+  --text: #f0efe8;
+  --muted: #888884;
+  --dim: #555552;
+  --coo: #4a8fff;
+  --coo-bg: rgba(74,143,255,0.08);
+  --coo-border: rgba(74,143,255,0.2);
+  --hrd: #e06ba0;
+  --hrd-bg: rgba(224,107,160,0.08);
+  --hrd-border: rgba(224,107,160,0.2);
+  --both: #3ecf8e;
+  --both-bg: rgba(62,207,142,0.08);
+  --both-border: rgba(62,207,142,0.2);
+  --yellow: #f0c040;
+  --yellow-bg: rgba(240,192,64,0.08);
+  --red: #f05050;
+  --red-bg: rgba(240,80,80,0.08);
+  --green: #3ecf8e;
+  --green-bg: rgba(62,207,142,0.08);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+/* NAV */
+nav {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(14,14,17,0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  padding: 0 24px;
+  display: flex; align-items: center; gap: 0;
+  overflow-x: auto;
+}
+.nav-logo {
+  font-family: 'Unbounded', sans-serif;
+  font-size: 11px; font-weight: 600;
+  letter-spacing: .08em;
+  color: var(--muted);
+  white-space: nowrap;
+  padding: 16px 20px 16px 0;
+  border-right: 1px solid var(--border);
+  margin-right: 8px;
+}
+.nav-link {
+  padding: 18px 14px;
+  font-size: 12px; color: var(--muted);
+  text-decoration: none; white-space: nowrap;
+  border-bottom: 2px solid transparent;
+  transition: color .2s, border-color .2s;
+}
+.nav-link:hover { color: var(--text); }
+.nav-link.active { color: var(--text); border-bottom-color: var(--coo); }
+
+/* HERO */
+.hero {
+  padding: 72px 24px 56px;
+  max-width: 860px; margin: 0 auto;
+  text-align: center;
+}
+.hero-eyebrow {
+  display: inline-block;
+  font-size: 10px; font-weight: 500;
+  letter-spacing: .12em; text-transform: uppercase;
+  color: var(--coo);
+  background: var(--coo-bg);
+  border: 1px solid var(--coo-border);
+  border-radius: 20px;
+  padding: 4px 14px;
+  margin-bottom: 24px;
+}
+.hero h1 {
+  font-family: 'Unbounded', sans-serif;
+  font-size: clamp(24px, 5vw, 40px);
+  font-weight: 300;
+  line-height: 1.2;
+  margin-bottom: 20px;
+  letter-spacing: -.02em;
+}
+.hero h1 span { color: var(--coo); }
+.hero-sub {
+  font-size: 15px; color: var(--muted);
+  max-width: 540px; margin: 0 auto 40px;
+  line-height: 1.7;
+}
+.hero-badges {
+  display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;
+}
+.hbadge {
+  font-size: 12px; padding: 6px 14px;
+  border-radius: 20px; border: 1px solid var(--border2);
+  color: var(--muted);
+}
+
+/* MAIN */
+main { max-width: 900px; margin: 0 auto; padding: 0 24px 80px; }
+
+/* SECTION TITLE */
+.section-label {
+  display: flex; align-items: center; gap: 12px;
+  margin-bottom: 24px; margin-top: 56px;
+}
+.section-num {
+  font-family: 'Unbounded', sans-serif;
+  font-size: 10px; font-weight: 600;
+  color: var(--dim);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 3px 7px;
+}
+.section-title {
+  font-family: 'Unbounded', sans-serif;
+  font-size: 13px; font-weight: 400;
+  letter-spacing: .04em;
+  color: var(--text);
+}
+.section-desc {
+  font-size: 13px; color: var(--muted);
+  max-width: 640px; margin-bottom: 24px;
+  line-height: 1.7;
+}
+
+/* WHY BLOCK */
+.why-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 12px;
+  margin-bottom: 12px;
+}
+.why-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px 22px;
+}
+.why-icon {
+  width: 32px; height: 32px;
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 14px;
+  margin-bottom: 12px;
+}
+.why-title { font-size: 13px; font-weight: 500; margin-bottom: 6px; }
+.why-desc { font-size: 12px; color: var(--muted); line-height: 1.6; }
+
+/* TIMELINE */
+.timeline { position: relative; padding-left: 0; }
+.tl-item {
+  display: grid;
+  grid-template-columns: 80px 1px 1fr;
+  gap: 0 20px;
+  margin-bottom: 0;
+}
+.tl-when {
+  text-align: right;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+.tl-when-main {
+  font-size: 11px; font-weight: 500;
+  color: var(--muted);
+  white-space: nowrap;
+}
+.tl-when-sub { font-size: 10px; color: var(--dim); }
+
+.tl-spine {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.tl-dot {
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-top: 24px;
+  position: relative;
+  z-index: 1;
+}
+.tl-line-seg {
+  width: 1px;
+  flex: 1;
+  background: var(--border);
+}
+.tl-line-seg.first { margin-top: 0; }
+.tl-item:last-child .tl-line-seg.last { display: none; }
+
+.tl-body {
+  padding: 16px 0 28px;
+}
+.tl-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 18px 20px;
+}
+.tl-card-head {
+  display: flex; align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+.tl-card-title { font-size: 14px; font-weight: 500; }
+.tl-card-tag {
+  font-size: 10px; padding: 3px 8px;
+  border-radius: 10px; white-space: nowrap;
+  flex-shrink: 0;
+}
+.tl-cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+.tl-col-title {
+  font-size: 10px; font-weight: 500;
+  text-transform: uppercase; letter-spacing: .08em;
+  margin-bottom: 6px;
+}
+.tl-col-item {
+  font-size: 12px; color: var(--muted);
+  padding: 4px 0;
+  border-bottom: 1px solid var(--border);
+  line-height: 1.4;
+}
+.tl-col-item:last-child { border: none; }
+.tl-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
+.tag {
+  font-size: 11px; padding: 3px 10px;
+  border-radius: 10px;
+}
+.tag-coo { background: var(--coo-bg); color: var(--coo); border: 1px solid var(--coo-border); }
+.tag-hrd { background: var(--hrd-bg); color: var(--hrd); border: 1px solid var(--hrd-border); }
+.tag-both { background: var(--both-bg); color: var(--both); border: 1px solid var(--both-border); }
+
+/* ZONES */
+.zones-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-bottom: 24px;
+}
+.zone-card {
+  border-radius: 10px;
+  padding: 14px 16px;
+  border: 1px solid var(--border);
+}
+.zone-pct { font-family: 'Unbounded', sans-serif; font-size: 22px; font-weight: 300; margin-bottom: 2px; }
+.zone-name { font-size: 11px; color: var(--muted); }
+
+/* STAGES */
+.stage-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  margin-bottom: 10px;
+  overflow: hidden;
+}
+.stage-head {
+  display: flex; align-items: center; gap: 12px;
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--border);
+}
+.stage-num {
+  font-family: 'Unbounded', sans-serif;
+  font-size: 10px; font-weight: 600;
+  width: 24px; height: 24px;
+  border-radius: 6px;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.stage-head-title { font-size: 13px; font-weight: 500; flex: 1; }
+.stage-head-meta { font-size: 11px; color: var(--muted); }
+.stage-body {
+  padding: 16px 18px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+.stage-col-label {
+  font-size: 10px; font-weight: 500;
+  text-transform: uppercase; letter-spacing: .08em;
+  margin-bottom: 8px;
+}
+.stage-col-row {
+  font-size: 12px; color: var(--muted);
+  padding: 5px 0;
+  border-bottom: 1px solid var(--border);
+  line-height: 1.4;
+  display: flex; gap: 8px; align-items: flex-start;
+}
+.stage-col-row::before {
+  content: '—';
+  color: var(--dim);
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+.stage-col-row:last-child { border: none; }
+
+/* PIP */
+.pip-step {
+  display: flex; gap: 16px;
+  margin-bottom: 12px;
+}
+.pip-num {
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Unbounded', sans-serif;
+  font-size: 11px; font-weight: 600;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.pip-body {
+  flex: 1;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 14px 16px;
+}
+.pip-title { font-size: 13px; font-weight: 500; margin-bottom: 5px; }
+.pip-desc { font-size: 12px; color: var(--muted); line-height: 1.6; }
+.pip-tags { margin-top: 8px; display: flex; gap: 6px; flex-wrap: wrap; }
+
+/* SYNC */
+.sync-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 18px 20px;
+  margin-bottom: 10px;
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  gap: 20px;
+  align-items: start;
+}
+.sync-freq {
+  font-family: 'Unbounded', sans-serif;
+  font-size: 11px; font-weight: 600;
+  color: var(--muted);
+  padding-top: 2px;
+}
+.sync-title { font-size: 13px; font-weight: 500; margin-bottom: 5px; }
+.sync-desc { font-size: 12px; color: var(--muted); line-height: 1.6; }
+
+/* VALUES */
+.val-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 10px;
+}
+.val-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 18px 20px;
+}
+.val-marker {
+  width: 4px; height: 28px;
+  border-radius: 2px;
+  margin-bottom: 12px;
+}
+.val-title { font-size: 13px; font-weight: 500; margin-bottom: 6px; }
+.val-desc { font-size: 12px; color: var(--muted); line-height: 1.6; }
+
+/* CHECKLIST */
+.checklist-section { margin-bottom: 32px; }
+.cl-head {
+  display: flex; align-items: center; gap: 10px;
+  margin-bottom: 12px;
+}
+.cl-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+.cl-title { font-size: 13px; font-weight: 500; }
+.cl-sub { font-size: 11px; color: var(--muted); margin-left: auto; }
+
+.cl-item {
+  display: flex; align-items: flex-start; gap: 12px;
+  padding: 10px 14px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  margin-bottom: 6px;
+  cursor: pointer;
+  transition: border-color .15s;
+}
+.cl-item:hover { border-color: var(--border2); }
+.cl-item.done { opacity: .55; }
+.cl-item.done .cl-check { background: var(--both); border-color: var(--both); }
+.cl-item.done .cl-check::after {
+  content: '';
+  display: block; width: 8px; height: 5px;
+  border-left: 1.5px solid #0e0e11;
+  border-bottom: 1.5px solid #0e0e11;
+  transform: rotate(-45deg) translate(1px, -1px);
+}
+.cl-check {
+  width: 18px; height: 18px;
+  border-radius: 5px;
+  border: 1.5px solid var(--border2);
+  flex-shrink: 0; margin-top: 1px;
+  transition: all .15s;
+  display: flex; align-items: center; justify-content: center;
+}
+.cl-text { flex: 1; }
+.cl-text-main { font-size: 13px; line-height: 1.4; }
+.cl-text-sub { font-size: 11px; color: var(--muted); margin-top: 2px; }
+.cl-owner {
+  font-size: 10px; padding: 2px 8px;
+  border-radius: 8px; white-space: nowrap;
+  align-self: center; flex-shrink: 0;
+}
+
+/* NOTE */
+.note {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--both);
+  border-radius: 8px;
+  padding: 14px 16px;
+  font-size: 12px; color: var(--muted);
+  line-height: 1.7;
+  margin-top: 16px;
+}
+.note b { color: var(--text); }
+
+/* ROLE GRID */
+.role-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+.role-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+}
+.role-head {
+  padding: 12px 16px;
+  font-size: 12px; font-weight: 500;
+}
+.role-list {
+  padding: 8px 0;
+}
+.role-row {
+  padding: 6px 16px;
+  font-size: 12px; color: var(--muted);
+  border-bottom: 1px solid var(--border);
+  line-height: 1.4;
+}
+.role-row:last-child { border: none; }
+
+/* JOINT GRID */
+.joint-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+.joint-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 14px 16px;
+}
+.joint-label {
+  font-size: 10px; font-weight: 500;
+  text-transform: uppercase; letter-spacing: .07em;
+  color: var(--dim);
+  margin-bottom: 8px;
+}
+.joint-row {
+  font-size: 12px; color: var(--muted);
+  padding: 4px 0;
+  border-bottom: 1px solid var(--border);
+  line-height: 1.4;
+}
+.joint-row:last-child { border: none; }
+
+/* TRIGGER CARDS */
+.trigger-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 16px 18px;
+  margin-bottom: 10px;
+}
+.tr-head { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+.tr-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+.tr-title { font-size: 13px; font-weight: 500; }
+.tr-body { font-size: 12px; color: var(--muted); line-height: 1.7; }
+
+/* GOLDEN RULE */
+.golden {
+  background: var(--surface2);
+  border: 1px solid var(--border2);
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-top: 32px;
+}
+.golden-title {
+  font-family: 'Unbounded', sans-serif;
+  font-size: 11px; font-weight: 600;
+  letter-spacing: .06em;
+  color: var(--yellow);
+  margin-bottom: 14px;
+}
+.golden-row {
+  display: flex; gap: 12px;
+  margin-bottom: 8px;
+  font-size: 13px;
+}
+.golden-role { color: var(--muted); min-width: 50px; }
+.golden-sep { color: var(--dim); }
+.golden-desc { color: var(--text); }
+
+/* FOOTER */
+footer {
+  border-top: 1px solid var(--border);
+  padding: 24px;
+  text-align: center;
+  font-size: 11px; color: var(--dim);
+  margin-top: 40px;
+}
+
+/* PRINT */
+@media print {
+  nav { display: none; }
+  .hero { padding: 32px 24px; }
+}
+
+/* MOBILE */
+@media (max-width: 640px) {
+  .tl-item { grid-template-columns: 56px 1px 1fr; gap: 0 12px; }
+  .tl-cols { grid-template-columns: 1fr; }
+  .stage-body { grid-template-columns: 1fr; }
+  .role-grid { grid-template-columns: 1fr; }
+  .joint-grid { grid-template-columns: 1fr; }
+  .zones-row { grid-template-columns: 1fr; }
+  .sync-card { grid-template-columns: 1fr; gap: 4px; }
+  .why-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">COO × HRD</div>
+  <a class="nav-link active" href="#why">Навіщо</a>
+  <a class="nav-link" href="#cycle">Цикл</a>
+  <a class="nav-link" href="#roles">Ролі</a>
+  <a class="nav-link" href="#escalation">Ескалація</a>
+  <a class="nav-link" href="#pip">PIP</a>
+  <a class="nav-link" href="#sync">Зустрічі</a>
+  <a class="nav-link" href="#values">Цінності</a>
+  <a class="nav-link" href="#checklist">Чекліст</a>
+</nav>
+
+<div class="hero">
+  <div class="hero-eyebrow">Фреймворк управління ефективністю</div>
+  <h1>Як <span>COO і HRD</span> управляють командою разом</h1>
+  <p class="hero-sub">Єдина логіка: хто що робить, коли ініціює, як приймає рішення про людей — від моніторингу до найважчих розмов.</p>
+  <div class="hero-badges">
+    <span class="hbadge">Місячний ритм</span>
+    <span class="hbadge">4 рівні ескалації</span>
+    <span class="hbadge">Людяність у кожному кроці</span>
+    <span class="hbadge">Спільні рішення</span>
+  </div>
+</div>
+
+<main>
+
+<!-- WHY -->
+<div id="why" class="section-label">
+  <span class="section-num">01</span>
+  <span class="section-title">Навіщо цей фреймворк</span>
+</div>
+<p class="section-desc">Коли COO і HRD діють без узгодженої системи — людина отримує суперечливі сигнали, рішення затримуються, а відповідальність розмивається. Цей фреймворк фіксує хто за що відповідає і як обидва рухаються в одному напрямку.</p>
+
+<div class="why-grid">
+  <div class="why-card">
+    <div class="why-icon" style="background:var(--coo-bg);color:var(--coo)">⚙</div>
+    <div class="why-title">COO бачить результат</div>
+    <div class="why-desc">Операційні метрики, відхилення від плану, вплив на бізнес-цілі. Відповідає на питання <em>що</em> і <em>скільки</em>.</div>
+  </div>
+  <div class="why-card">
+    <div class="why-icon" style="background:var(--hrd-bg);color:var(--hrd)">♥</div>
+    <div class="why-title">HRD бачить людину</div>
+    <div class="why-desc">Залученість, причини падіння, ризики вигорання і ротації. Відповідає на питання <em>як</em> і <em>чому</em>.</div>
+  </div>
+  <div class="why-card">
+    <div class="why-icon" style="background:var(--both-bg);color:var(--both)">⊕</div>
+    <div class="why-title">Рішення — завжди разом</div>
+    <div class="why-desc">Найм, PIP, підвищення, зміна ролі, розставання — ніколи в одноособовому порядку. Обидва підписують і несуть відповідальність.</div>
+  </div>
+  <div class="why-card">
+    <div class="why-icon" style="background:var(--yellow-bg);color:var(--yellow)">◈</div>
+    <div class="why-title">Один голос для команди</div>
+    <div class="why-desc">Людина чує узгоджену позицію — без протиріч між операційним і HR-напрямком. Довіра будується на передбачуваності.</div>
+  </div>
+</div>
+
+<!-- CYCLE -->
+<div id="cycle" class="section-label">
+  <span class="section-num">02</span>
+  <span class="section-title">Річний цикл управління</span>
+</div>
+<p class="section-desc">П'ять ключових моментів від планування до підсумку. Кожен момент має чітку відповідальність і результат.</p>
+
+<div class="timeline">
+  <!-- Item 1 -->
+  <div class="tl-item">
+    <div class="tl-when"><div class="tl-when-main">Грудень — Лютий</div><div class="tl-when-sub">Початок циклу</div></div>
+    <div class="tl-spine"><div class="tl-dot" style="background:var(--coo)"></div><div class="tl-line-seg"></div></div>
+    <div class="tl-body">
+      <div class="tl-card">
+        <div class="tl-card-head">
+          <div class="tl-card-title">Планування — встановлення KPI на рік</div>
+          <div class="tl-card-tag tag-coo">Старт циклу</div>
+        </div>
+        <div class="tl-cols">
+          <div>
+            <div class="tl-col-title" style="color:var(--coo)">COO</div>
+            <div class="tl-col-item">Формує цілі по відділах із операційної стратегії</div>
+            <div class="tl-col-item">Визначає пріоритети і метрики результативності</div>
+          </div>
+          <div>
+            <div class="tl-col-title" style="color:var(--hrd)">HRD</div>
+            <div class="tl-col-item">Перекладає цілі в профіль компетенцій</div>
+            <div class="tl-col-item">Формує KPI для кожної посади</div>
+          </div>
+        </div>
+        <div class="tl-tags">
+          <span class="tag tag-both">✓ Результат: погоджені KPI-карти для всіх посад</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Item 2 -->
+  <div class="tl-item">
+    <div class="tl-when"><div class="tl-when-main">Щомісяця</div><div class="tl-when-sub">Основний ритм</div></div>
+    <div class="tl-spine"><div class="tl-dot" style="background:var(--both)"></div><div class="tl-line-seg"></div></div>
+    <div class="tl-body">
+      <div class="tl-card">
+        <div class="tl-card-head">
+          <div class="tl-card-title">People Review — спільний перегляд дашборду</div>
+          <div class="tl-card-tag tag-both">Основна зустріч</div>
+        </div>
+        <div class="tl-cols">
+          <div>
+            <div class="tl-col-title" style="color:var(--coo)">COO</div>
+            <div class="tl-col-item">Переглядає операційні KPI по відділах</div>
+            <div class="tl-col-item">Виявляє відхилення і системні причини</div>
+          </div>
+          <div>
+            <div class="tl-col-title" style="color:var(--hrd)">HRD</div>
+            <div class="tl-col-item">Аналізує залученість і поведінкові тренди</div>
+            <div class="tl-col-item">Виявляє ризики вигорання і ротації</div>
+          </div>
+        </div>
+        <div class="tl-tags">
+          <span class="tag tag-both">✓ Результат: список людей з діями і відповідальними</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Item 3 -->
+  <div class="tl-item">
+    <div class="tl-when"><div class="tl-when-main">Квартально</div><div class="tl-when-sub">Поглиблений огляд</div></div>
+    <div class="tl-spine"><div class="tl-dot" style="background:var(--hrd)"></div><div class="tl-line-seg"></div></div>
+    <div class="tl-body">
+      <div class="tl-card">
+        <div class="tl-card-head">
+          <div class="tl-card-title">Performance Calibration — кожна ключова людина</div>
+          <div class="tl-card-tag tag-hrd">+CEO</div>
+        </div>
+        <div class="tl-cols">
+          <div>
+            <div class="tl-col-title" style="color:var(--coo)">COO</div>
+            <div class="tl-col-item">Оцінює бізнес-результат кожного відділу</div>
+            <div class="tl-col-item">Приймає рішення: розвиток, PIP або зміна ролі</div>
+          </div>
+          <div>
+            <div class="tl-col-title" style="color:var(--hrd)">HRD</div>
+            <div class="tl-col-item">Організовує 1:1 з тими, хто відстає</div>
+            <div class="tl-col-item">Калібрує оцінки між відділами</div>
+          </div>
+        </div>
+        <div class="tl-tags">
+          <span class="tag tag-both">✓ Результат: узгоджені рішення по кожній людині</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Item 4 -->
+  <div class="tl-item">
+    <div class="tl-when"><div class="tl-when-main">Q2 або Q3</div><div class="tl-when-sub">За потреби</div></div>
+    <div class="tl-spine"><div class="tl-dot" style="background:var(--yellow)"></div><div class="tl-line-seg"></div></div>
+    <div class="tl-body">
+      <div class="tl-card">
+        <div class="tl-card-head">
+          <div class="tl-card-title">Mid-Year Calibration — перегляд релевантності KPI</div>
+          <div class="tl-card-tag" style="background:var(--yellow-bg);color:var(--yellow);border:1px solid rgba(240,192,64,.2)">За ситуацією</div>
+        </div>
+        <div class="tl-cols">
+          <div>
+            <div class="tl-col-title" style="color:var(--coo)">COO ініціює якщо</div>
+            <div class="tl-col-item">Змінилась бізнес-стратегія або ринок</div>
+            <div class="tl-col-item">KPI втратили актуальність</div>
+          </div>
+          <div>
+            <div class="tl-col-title" style="color:var(--hrd)">HRD ініціює якщо</div>
+            <div class="tl-col-item">Команда або ролі суттєво змінились</div>
+            <div class="tl-col-item">Є системна проблема з досяжністю</div>
+          </div>
+        </div>
+        <div class="tl-tags">
+          <span class="tag tag-both">✓ Результат: оновлені або підтверджені KPI-карти</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Item 5 -->
+  <div class="tl-item">
+    <div class="tl-when"><div class="tl-when-main">Листопад — Грудень</div><div class="tl-when-sub">Підсумок</div></div>
+    <div class="tl-spine"><div class="tl-dot" style="background:#a78bfa"></div></div>
+    <div class="tl-body">
+      <div class="tl-card">
+        <div class="tl-card-head">
+          <div class="tl-card-title">Annual Performance Review — фінальна оцінка</div>
+          <div class="tl-card-tag" style="background:rgba(167,139,250,.1);color:#a78bfa;border:1px solid rgba(167,139,250,.2)">+CEO</div>
+        </div>
+        <div class="tl-cols">
+          <div>
+            <div class="tl-col-title" style="color:var(--coo)">COO оцінює</div>
+            <div class="tl-col-item">Чи досягнуті бізнес-цілі</div>
+            <div class="tl-col-item">Вплив людини на результат компанії</div>
+          </div>
+          <div>
+            <div class="tl-col-title" style="color:var(--hrd)">HRD оцінює</div>
+            <div class="tl-col-item">Відповідність культурі і цінностям</div>
+            <div class="tl-col-item">Потенціал росту і розвитку</div>
+          </div>
+        </div>
+        <div class="tl-tags">
+          <span class="tag tag-both">✓ Результат: бонус, підвищення, нова роль або PIP</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ROLES -->
+<div id="roles" class="section-label">
+  <span class="section-num">03</span>
+  <span class="section-title">Ролі і регулярні дії</span>
+</div>
+<p class="section-desc">Що кожна сторона робить самостійно і де без двох підписів рішення не існує.</p>
+
+<div class="role-grid">
+  <div class="role-card">
+    <div class="role-head" style="background:var(--coo-bg);color:var(--coo)">COO — регулярні дії</div>
+    <div class="role-list">
+      <div class="role-row">Щомісяця переглядає дашборд KPI по всіх посадах</div>
+      <div class="role-row">Виявляє відхилення і ескалює або коригує задачі</div>
+      <div class="role-row">Ставить операційні пріоритети на наступний місяць</div>
+      <div class="role-row">Щокварталу проводить огляд з керівниками відділів</div>
+      <div class="role-row">Ініціює перегляд KPI при зміні бізнес-стратегії</div>
+      <div class="role-row">Документує вплив на бізнес при проблемах результативності</div>
+      <div class="role-row">Затверджує фінальні оцінки і рішення по ролях</div>
+    </div>
+  </div>
+  <div class="role-card">
+    <div class="role-head" style="background:var(--hrd-bg);color:var(--hrd)">HRD — регулярні дії</div>
+    <div class="role-list">
+      <div class="role-row">Щомісяця аналізує залученість і пульс-опитування</div>
+      <div class="role-row">Виявляє ризики вигорання і ротації заздалегідь</div>
+      <div class="role-row">Веде 1:1 з людьми у жовтій зоні (KPI 60–80%)</div>
+      <div class="role-row">Готує програми навчання під виявлені gaps</div>
+      <div class="role-row">Ініціює перегляд KPI при зміні ролей або ринку</div>
+      <div class="role-row">Розробляє плани PIP і веде процес від початку до кінця</div>
+      <div class="role-row">Збирає зворотний зв'язок 360° перед Annual Review</div>
+    </div>
+  </div>
+</div>
+
+<div style="background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:16px 18px">
+  <div style="font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.08em;color:var(--both);margin-bottom:14px">Спільні рішення — завжди обидва без винятку</div>
+  <div class="joint-grid">
+    <div class="joint-card">
+      <div class="joint-label">Найм на нову посаду</div>
+      <div class="joint-row">COO визначає функцію і очікуваний KPI ролі</div>
+      <div class="joint-row">HRD формує профіль компетенцій і веде відбір</div>
+      <div class="joint-row">Спільно — фінальне рішення по кандидату</div>
+    </div>
+    <div class="joint-card">
+      <div class="joint-label">Performance Improvement Plan</div>
+      <div class="joint-row">COO визначає операційні цілі плану</div>
+      <div class="joint-row">HRD розробляє план підтримки і навчання</div>
+      <div class="joint-row">Обидва підписують і разом моніторять</div>
+    </div>
+    <div class="joint-card">
+      <div class="joint-label">Підвищення або бонус</div>
+      <div class="joint-row">COO оцінює бізнес-вплив людини</div>
+      <div class="joint-row">HRD оцінює потенціал і ринковий контекст</div>
+      <div class="joint-row">Спільне рішення, затверджує CEO</div>
+    </div>
+    <div class="joint-card">
+      <div class="joint-label">Зміна ролі або розставання</div>
+      <div class="joint-row">COO підтверджує відсутність бізнес-результату</div>
+      <div class="joint-row">HRD дотримується процедури і оцінює ризики</div>
+      <div class="joint-row">Спільно готують рішення і розмову</div>
+    </div>
+  </div>
+</div>
+
+<!-- ESCALATION -->
+<div id="escalation" class="section-label">
+  <span class="section-num">04</span>
+  <span class="section-title">Логіка ескалації за KPI</span>
+</div>
+<p class="section-desc">Чотири рівні реагування. Кожен наступний активується тільки якщо попередній пройдений і не дав результату. Жоден рівень не пропускається.</p>
+
+<div class="zones-row">
+  <div class="zone-card" style="border-color:rgba(62,207,142,.2);background:var(--both-bg)">
+    <div class="zone-pct" style="color:var(--green)">80–100%</div>
+    <div class="zone-name">Зелена зона — моніторинг</div>
+  </div>
+  <div class="zone-card" style="border-color:rgba(240,192,64,.2);background:var(--yellow-bg)">
+    <div class="zone-pct" style="color:var(--yellow)">60–79%</div>
+    <div class="zone-name">Жовта зона — підтримка</div>
+  </div>
+  <div class="zone-card" style="border-color:rgba(240,80,80,.2);background:var(--red-bg)">
+    <div class="zone-pct" style="color:var(--red)">&lt;60%</div>
+    <div class="zone-name">Червона зона — дія обов'язкова</div>
+  </div>
+</div>
+
+<!-- Stage 1 -->
+<div class="stage-card">
+  <div class="stage-head" style="border-color:rgba(62,207,142,.15)">
+    <div class="stage-num" style="background:var(--both-bg);color:var(--both)">1</div>
+    <div class="stage-head-title">Жовта зона — 1 місяць</div>
+    <div class="stage-head-meta">Підтримка без тиску</div>
+  </div>
+  <div class="stage-body">
+    <div>
+      <div class="stage-col-label" style="color:var(--coo)">COO</div>
+      <div class="stage-col-row">Перевіряє чи KPI були реалістичними</div>
+      <div class="stage-col-row">Уточнює пріоритети і знімає зайве навантаження</div>
+      <div class="stage-col-row">Дає зрозуміти: помічаємо і підтримуємо</div>
+    </div>
+    <div>
+      <div class="stage-col-label" style="color:var(--hrd)">HRD</div>
+      <div class="stage-col-row">Проводить 1:1 — що відбувається, що заважає</div>
+      <div class="stage-col-row">Виявляє причину: навик, ресурси, мотивація, особисте</div>
+      <div class="stage-col-row">Пропонує підтримку або навчання</div>
+    </div>
+  </div>
+</div>
+
+<!-- Stage 2 -->
+<div class="stage-card">
+  <div class="stage-head" style="border-color:rgba(240,192,64,.15)">
+    <div class="stage-num" style="background:var(--yellow-bg);color:var(--yellow)">2</div>
+    <div class="stage-head-title">Жовта зона — 2+ місяці або різке падіння</div>
+    <div class="stage-head-meta">Структурована підтримка</div>
+  </div>
+  <div class="stage-body">
+    <div>
+      <div class="stage-col-label" style="color:var(--coo)">COO</div>
+      <div class="stage-col-row">Разом з керівником переглядає задачі і пріоритети</div>
+      <div class="stage-col-row">Визначає чи є системна причина в процесах чи ресурсах</div>
+      <div class="stage-col-row">Чітко озвучує очікування і наступний термін оцінки</div>
+    </div>
+    <div>
+      <div class="stage-col-label" style="color:var(--hrd)">HRD</div>
+      <div class="stage-col-row">Проводить глибшу діагностику — 360° або структуроване інтерв'ю</div>
+      <div class="stage-col-row">Запускає план навчання або менторинг</div>
+      <div class="stage-col-row">Розглядає: чи підходить роль цій людині взагалі</div>
+    </div>
+  </div>
+</div>
+
+<!-- Stage 3 -->
+<div class="stage-card">
+  <div class="stage-head" style="border-color:rgba(240,80,80,.15)">
+    <div class="stage-num" style="background:var(--red-bg);color:var(--red)">3</div>
+    <div class="stage-head-title">Червона зона — 1 квартал</div>
+    <div class="stage-head-meta">PIP або зміна ролі</div>
+  </div>
+  <div class="stage-body">
+    <div>
+      <div class="stage-col-label" style="color:var(--coo)">COO</div>
+      <div class="stage-col-row">Переглядає ефективність самого керівника цієї людини</div>
+      <div class="stage-col-row">Документує вплив на бізнес — конкретно, без оцінок людини</div>
+      <div class="stage-col-row">Затверджує PIP і терміни</div>
+    </div>
+    <div>
+      <div class="stage-col-label" style="color:var(--hrd)">HRD</div>
+      <div class="stage-col-row">Ініціює формальний PIP разом з керівником</div>
+      <div class="stage-col-row">Пропонує альтернативу — інша посада в компанії</div>
+      <div class="stage-col-row">Веде розмову з людиною з повагою і чіткістю</div>
+    </div>
+  </div>
+</div>
+
+<!-- Stage 4 -->
+<div class="stage-card">
+  <div class="stage-head">
+    <div class="stage-num" style="background:rgba(255,255,255,.05);color:var(--muted)">4</div>
+    <div class="stage-head-title">Червона зона після PIP або квартал без змін</div>
+    <div class="stage-head-meta">Рішення з гідністю</div>
+  </div>
+  <div class="stage-body">
+    <div>
+      <div class="stage-col-label" style="color:var(--muted)">COO + HRD спільно</div>
+      <div class="stage-col-row">Чесна розмова: що спробували, що не вийшло</div>
+      <div class="stage-col-row">Пояснення впливу на бізнес — без звинувачень людини</div>
+      <div class="stage-col-row">Пропозиція іншої ролі в компанії якщо є можливість</div>
+    </div>
+    <div>
+      <div class="stage-col-label" style="color:var(--muted)">Якщо розставання</div>
+      <div class="stage-col-row">Підготовка гідних умов виходу</div>
+      <div class="stage-col-row">Чітке пояснення причин: невідповідність ролі, не людина</div>
+      <div class="stage-col-row">Рекомендаційний лист або підтримка у пошуку далі</div>
+    </div>
+  </div>
+</div>
+
+<div class="note">
+  <b>Головне правило:</b> 1 місяць у жовтій або червоній зоні — це не сигнал до звільнення, це сигнал до підтримки. Розмова про розставання виникає тільки після кварталу в червоній зоні <em>і</em> після того як пройдені усі попередні рівні без результату.
+</div>
+
+<!-- PIP -->
+<div id="pip" class="section-label">
+  <span class="section-num">05</span>
+  <span class="section-title">Процес PIP — план покращення ефективності</span>
+</div>
+<p class="section-desc">PIP — це не покарання і не підготовка до звільнення. Це структурована можливість для людини виправити ситуацію з підтримкою компанії. Без діагнозу план не запускається.</p>
+
+<div class="pip-step">
+  <div class="pip-num" style="background:var(--coo-bg);color:var(--coo)">1</div>
+  <div class="pip-body">
+    <div class="pip-title">Діагностика причини</div>
+    <div class="pip-desc">Перед запуском розібратись чому KPI не виконуються. Навик? Мотивація? Ресурси? Неправильна роль? Від причини залежить план. PIP без діагнозу — марна трата часу і демотивація людини.</div>
+    <div class="pip-tags"><span class="tag tag-hrd">HRD веде діагностику</span><span class="tag tag-coo">COO підтверджує висновок</span></div>
+  </div>
+</div>
+<div class="pip-step">
+  <div class="pip-num" style="background:var(--both-bg);color:var(--both)">2</div>
+  <div class="pip-body">
+    <div class="pip-title">Конкретний план на 30–60 днів</div>
+    <div class="pip-desc">Чіткі і досяжні цілі, ресурси підтримки (навчання, ментор, зміна задач), регулярні check-in. Людина має розуміти що треба зробити і що отримає реальну допомогу — не формальний папірець.</div>
+    <div class="pip-tags"><span class="tag tag-both">Керівник + HRD готують разом</span></div>
+  </div>
+</div>
+<div class="pip-step">
+  <div class="pip-num" style="background:var(--yellow-bg);color:var(--yellow)">3</div>
+  <div class="pip-body">
+    <div class="pip-title">Моніторинг — check-in раз на 2 тижні</div>
+    <div class="pip-desc">Регулярна зустріч між керівником і людиною. HRD доступний у фоні якщо потрібна підтримка. Фіксувати прогрес або відсутність змін — це важливо для подальшого рішення.</div>
+    <div class="pip-tags"><span class="tag tag-coo" style="background:rgba(255,255,255,.05);color:var(--muted);border-color:var(--border)">Керівник веде</span><span class="tag tag-hrd">HRD підтримує</span></div>
+  </div>
+</div>
+<div class="pip-step">
+  <div class="pip-num" style="background:var(--hrd-bg);color:var(--hrd)">4</div>
+  <div class="pip-body">
+    <div class="pip-title">Підсумок після PIP</div>
+    <div class="pip-desc">Є прогрес → продовжуємо з увагою, знімаємо формальний статус. Немає прогресу → розмова про альтернативну роль або розставання. В обох випадках — чітке пояснення і повага до людини.</div>
+    <div class="pip-tags"><span class="tag tag-both">COO + HRD спільно</span></div>
+  </div>
+</div>
+
+<!-- SYNC -->
+<div id="sync" class="section-label">
+  <span class="section-num">06</span>
+  <span class="section-title">Ритм зустрічей COO і HRD</span>
+</div>
+<p class="section-desc">Тижнева синхра прибрана — місячний ритм дає реальні дані для розмови. Між зустрічами — асинхронна комунікація при тривожних сигналах.</p>
+
+<div class="sync-card">
+  <div class="sync-freq" style="color:var(--both)">Щомісяця</div>
+  <div>
+    <div class="sync-title">People Review — 1 год</div>
+    <div class="sync-desc">Спільний перегляд дашборду після закриття місяця: хто в якій зоні, які тренди, що змінилось. Без протоколу зустріч не рахується — обов'язково список людей з діями і відповідальними.</div>
+  </div>
+</div>
+<div class="sync-card">
+  <div class="sync-freq" style="color:var(--coo)">Квартально</div>
+  <div>
+    <div class="sync-title">Performance Calibration — 2–3 год, +CEO</div>
+    <div class="sync-desc">Поглиблений огляд кожного відділу і кожної ключової людини. Калібрація оцінок між відділами щоб не було перекосів. Рішення: розвиток, переміщення, підвищення або PIP.</div>
+  </div>
+</div>
+<div class="sync-card">
+  <div class="sync-freq" style="color:var(--hrd)">Раз на рік</div>
+  <div>
+    <div class="sync-title">Strategic Workforce Review — пів дня, +CEO</div>
+    <div class="sync-desc">Огляд організаційної структури: чи відповідають ролі стратегії, які посади потрібно додати або змінити, де ризики у ключових позиціях. Результат — org chart і план найму на рік.</div>
+  </div>
+</div>
+
+<div class="note" style="border-left-color:var(--yellow)">
+  <b>Між зустрічами — асинхронно.</b> Якщо хтось бачить тривожний сигнал раніше наступного People Review — пише одне повідомлення з фактом і питанням «Що робимо?». Тригери для позапланового контакту: KPI впав нижче 60%, людина сигналізує про вигорання або звільнення, зовнішня зміна що впливає на ролі.
+</div>
+
+<!-- VALUES -->
+<div id="values" class="section-label">
+  <span class="section-num">07</span>
+  <span class="section-title">Цінності і принципи роботи з людьми</span>
+</div>
+<p class="section-desc">Ефективність без людяності — короткострокова. Ці принципи не пом'якшують рішення, вони роблять їх чесними і стійкими.</p>
+
+<div class="val-grid">
+  <div class="val-card">
+    <div class="val-marker" style="background:var(--coo)"></div>
+    <div class="val-title">Вплив на бізнес — не оцінка людини</div>
+    <div class="val-desc">Не «ти погано справляєшся», а «ось конкретна ситуація: через X ми не досягли Y, це коштувало бізнесу Z». Людина чує факт, не вирок. Це зберігає гідність і відкриває діалог.</div>
+  </div>
+  <div class="val-card">
+    <div class="val-marker" style="background:var(--hrd)"></div>
+    <div class="val-title">Альтернатива перед розставанням — завжди</div>
+    <div class="val-desc">Якщо людина не підходить для поточної ролі але цінна для компанії — пропонуємо іншу позицію. Навіть якщо людина відмовляється — вона пам'ятає що її поважали.</div>
+  </div>
+  <div class="val-card">
+    <div class="val-marker" style="background:var(--yellow)"></div>
+    <div class="val-title">Лояльність і стаж враховуються</div>
+    <div class="val-desc">Людина з 2+ роками в компанії отримує більше підтримки і часу перед критичними рішеннями. Новий співробітник після іспитового — стандартний процес. Це справедливо і логічно.</div>
+  </div>
+  <div class="val-card">
+    <div class="val-marker" style="background:var(--both)"></div>
+    <div class="val-title">Розставання — з підтримкою, не з ганьбою</div>
+    <div class="val-desc">Гідні умови виходу, можливість рекомендаційного листа, чітке пояснення що справа в невідповідності ролі — не в людині. Так компанія зберігає репутацію і людяність.</div>
+  </div>
+  <div class="val-card">
+    <div class="val-marker" style="background:#a78bfa"></div>
+    <div class="val-title">COO і HRD говорять одним голосом</div>
+    <div class="val-desc">Людина не отримує суперечливих сигналів від двох сторін. Перед будь-якою важливою розмовою COO і HRD синхронізуються і формулюють спільну позицію.</div>
+  </div>
+  <div class="val-card">
+    <div class="val-marker" style="background:var(--red)"></div>
+    <div class="val-title">Причина важливіша за симптом</div>
+    <div class="val-desc">Перш ніж реагувати на падіння KPI — зрозуміти чому. Якщо причина системна (процеси, інструменти, ресурси) — це відповідальність COO, не людини.</div>
+  </div>
+</div>
+
+<div class="golden">
+  <div class="golden-title">ЗОЛОТЕ ПРАВИЛО РОЗПОДІЛУ</div>
+  <div class="golden-row">
+    <div class="golden-role" style="color:var(--coo)">COO</div>
+    <div class="golden-sep">—</div>
+    <div class="golden-desc">відповідає за <em>що</em> і <em>скільки</em> · результат, метрика, ціль</div>
+  </div>
+  <div class="golden-row">
+    <div class="golden-role" style="color:var(--hrd)">HRD</div>
+    <div class="golden-sep">—</div>
+    <div class="golden-desc">відповідає за <em>як</em> і <em>чому</em> · процес, розвиток, причина</div>
+  </div>
+  <div class="golden-row">
+    <div class="golden-role" style="color:var(--both)">Разом</div>
+    <div class="golden-sep">—</div>
+    <div class="golden-desc">рішення про людей · завжди спільне, ніколи в одноособовому порядку</div>
+  </div>
+</div>
+
+<!-- CHECKLIST -->
+<div id="checklist" class="section-label">
+  <span class="section-num">08</span>
+  <span class="section-title">Чекліст — хто і коли що робить</span>
+</div>
+<p class="section-desc">Конкретні дії по кожному етапу. Натисни щоб відмітити виконане.</p>
+
+<!-- Planning -->
+<div class="checklist-section">
+  <div class="cl-head">
+    <div class="cl-dot" style="background:var(--coo)"></div>
+    <div class="cl-title">Планування KPI (Грудень — Лютий)</div>
+  </div>
+  <div class="cl-item" onclick="toggle(this)"><div class="cl-check"></div><div class="cl-text"><div class="cl-text-main">COO формує бізнес-цілі по відділах на рік</div><div class="cl-text-sub">На основі стратегії та фінансових планів</div></div><span class="cl-owner tag-coo">COO</span></div>
+  <div class="cl-item" onclick="toggle(this)"><div class="cl-check"></div><div class="cl-text"><div class="cl-text-main">HRD перекладає цілі в профіль компетенцій і KPI посад</div><div class="cl-text-sub">Враховує ринок праці і внутрішні можливості</div></div><span class="cl-owner tag-hrd">HRD</span></div>
+  <div class="cl-item" onclick="toggle(this)"><div class="cl-check"></div><div class="cl-text"><div class="cl-text-main">Спільне погодження KPI-карт для всіх посад</div><div class="cl-text-sub">Кожна карта підписана обома</div></div><span class="cl-owner tag-both">Разом</span></div>
+  <div class="cl-item" onclick="toggle(this)"><div class="cl-check"></div><div class="cl-text"><div class="cl-text-main">KPI-карти представлені керівникам відділів</div><div class="cl-text-sub">Пояснений зв'язок KPI зі стратегією компанії</div></div><span class="cl-owner tag-both">Разом</span></div>
+</div>
+
+<!-- Monthly -->
+<div class="checklist-section">
+  <div class="cl-head">
+    <div class="cl-dot" style="background:var(--both)"></div>
+    <div class="cl-title">People Review (щомісяця)</div>
+  </div>
+  <div class="cl-item" onclick="toggle(this)"><div class="cl-check"></div><div class="cl-text"><div class="cl-text-main">Керівники відділів внесли факт у дашборд</div><div class="cl-text-sub">До 5 числа наступного місяця</div></div><span class="cl-owner" style="background:rgba(255,255,255,.05);color:var(--muted)">Керівники</span></div>
+  <div class="cl-item" onclick="toggle(this)"><div class="cl-check"></div><div class="cl-text"><div class="cl-text-main">COO переглянув дашборд і виділив відхилення</div><div class="cl-text-sub">До зустрічі People Review</div></div><span class="cl-owner tag-coo">COO</span></div>
+  <div class="cl-item" onclick="toggle(this)"><div class="cl-check"></div><div class="cl-text"><div class="cl-text-main">HRD перевірив залученість і сигнали від команди</div><div class="cl-text-sub">Пульс-опитування або 1:1 фідбек</div></div><span class="cl-owner tag-hrd">HRD</span></div>
+  <div class="cl-item" onclick="toggle(this)"><div class="cl-check"></div><div class="cl-text"><div class="cl-text-main">Проведено People Review — зустріч зафіксована</div><div class="cl-text-sub">Протокол: список людей, дії, відповідальні</div></div><span class="cl-owner tag-both">Разом</span></div>
+  <div class="cl-item" onclick="toggle(this)"><div class="cl-check"></div><div class="cl-text"><div class="cl-text-main">Ініційовані дії по людях у жовтій і червоній зоні</div><div class="cl-text-sub">COO або HRD відповідно до рівня ескалації</div></div><span class="cl-owner tag-both">Разом</span></div>
+</div>
+
+<!-- Yellow zone -->
+<div class="checklist-section">
+  <div class="cl-head">
+    <div class="cl-dot" style="background:var(--yellow)"></div>
+    <div class="cl-title">Жовта зона — реакція</div>
+  </div>
+  <div class="cl-item" onclick="toggle(this)"><div class="cl-check"></div><div class="cl-text"><div class="cl-text-main">HRD провів 1:1 і виявив причину падіння</div><div class="cl-text-sub">Навик / ресурси / мотивація / особисте</div></div><span class="cl-owner tag-hrd">HRD</span></div>
+  <div class="cl-item" onclick="toggle(this)"><div class="cl-check"></div><div class="cl-text"><div class="cl-text-main">COO перевірив реалістичність KPI і задач</div><div class="cl-text-sub">Можливо — зняти зайве навантаження</div></div><span class="cl-owner tag-coo">COO</span></div>
+  <div class="cl-item" onclick="toggle(this)"><div class="cl-check"></div><div class="cl-text"><div class="cl-text-main">Узгоджений план підтримки (навчання або зміна задач)</div><div class="cl-text-sub">Якщо жовта зона 2+ місяці</div></div><span class="cl-owner tag-both">Разом</span></div>
+  <div class="cl-item" onclick="toggle(this)"><div class="cl-check"></div><div class="cl-text"><div class="cl-text-main">Людині чітко озвучені очікування і термін</div><div class="cl-text-sub">Прозоро, без погроз — з підтримкою</div></div><span class="cl-owner tag-both">Разом</span></div>
+</div>
+
+<!-- Red zone PIP -->
+<div class="checklist-section">
+  <div class="cl-head">
+    <div class="cl-dot" style="background:var(--red)"></div>
+    <div class="cl-title">Червона зона — PIP (1 квартал)</div>
+  </div>
+  <div class="cl-item" onclick="toggle(this)"><div class="cl-check"></div><div class="cl-text"><div class="cl-text-main">COO задокументував вплив на бізнес</div><div class="cl-text-sub">Конкретні факти — без оцінок людини</div></div><span class="cl-owner tag-coo">COO</span></div>
+  <div class="cl-item" onclick="toggle(this)"><div class="cl-check"></div><div class="cl-text"><div class="cl-text-main">COO переглянув ефективність керівника цієї людини</div><div class="cl-text-sub">Можливо причина — в управлінні, не в людині</div></div><span class="cl-owner tag-coo">COO</span></div>
+  <div class="cl-item" onclick="toggle(this)"><div class="cl-check"></div><div class="cl-text"><div class="cl-text-main">HRD провів діагностику і розробив план PIP</div><div class="cl-text-sub">30–60 днів, з конкретними цілями і ресурсами</div></div><span class="cl-owner tag-hrd">HRD</span></div>
+  <div class="cl-item" onclick="toggle(this)"><div class="cl-check"></div><div class="cl-text"><div class="cl-text-main">PIP погоджений і підписаний обома сторонами</div><div class="cl-text-sub">COO + HRD підписують</div></div><span class="cl-owner tag-both">Разом</span></div>
+  <div class="cl-item" onclick="toggle(this)"><div class="cl-check"></div><div class="cl-text"><div class="cl-text-main">Розмова з людиною проведена спільно</div><div class="cl-text-sub">Один голос, повага, чіткість</div></div><span class="cl-owner tag-both">Разом</span></div>
+  <div class="cl-item" onclick="toggle(this)"><div class="cl-check"></div><div class="cl-text"><div class="cl-text-main">Check-in кожні 2 тижні під час PIP</div><div class="cl-text-sub">Керівник веде, HRD доступний</div></div><span class="cl-owner tag-hrd">HRD</span></div>
+</div>
+
+<!-- After PIP -->
+<div class="checklist-section">
+  <div class="cl-head">
+    <div class="cl-dot" style="background:var(--muted)"></div>
+    <div class="cl-title">Після PIP — рішення</div>
+  </div>
+  <div class="cl-item" onclick="toggle(this)"><div class="cl-check"></div><div class="cl-text"><div class="cl-text-main">Оцінено прогрес: є зміни чи ні</div><div class="cl-text-sub">На основі зафіксованих check-in</div></div><span class="cl-owner tag-both">Разом</span></div>
+  <div class="cl-item" onclick="toggle(this)"><div class="cl-check"></div><div class="cl-text"><div class="cl-text-main">Якщо є прогрес — знято статус PIP</div><div class="cl-text-sub">Людина знає що впоралась</div></div><span class="cl-owner tag-both">Разом</span></div>
+  <div class="cl-item" onclick="toggle(this)"><div class="cl-check"></div><div class="cl-text"><div class="cl-text-main">Якщо нема прогресу — розглянута альтернативна роль</div><div class="cl-text-sub">Перед будь-яким рішенням про розставання</div></div><span class="cl-owner tag-both">Разом</span></div>
+  <div class="cl-item" onclick="toggle(this)"><div class="cl-check"></div><div class="cl-text"><div class="cl-text-main">Якщо розставання — підготовлені гідні умови виходу</div><div class="cl-text-sub">Рекомендація, пояснення, підтримка</div></div><span class="cl-owner tag-hrd">HRD</span></div>
+</div>
+
+</main>
+
+<footer>
+  COO × HRD Performance Framework · Версія 1.0 · Для внутрішнього використання
+</footer>
+
+<script>
+function toggle(el) {
+  el.classList.toggle('done');
+}
+
+// Nav active state on scroll
+const sections = document.querySelectorAll('[id]');
+const navLinks = document.querySelectorAll('.nav-link');
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      navLinks.forEach(l => l.classList.remove('active'));
+      const link = document.querySelector(`.nav-link[href="#${e.target.id}"]`);
+      if (link) link.classList.add('active');
+    }
+  });
+}, { rootMargin: '-30% 0px -60% 0px' });
+sections.forEach(s => obs.observe(s));
+</script>
+</body>
+</html>
